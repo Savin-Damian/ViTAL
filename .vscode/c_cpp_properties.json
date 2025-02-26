@@ -1,0 +1,45 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${default}",
+                "D:/ESP32/esp-idf/components/app_trace/sys_view/Config",
+                "D:/ESP32/esp-idf/components/soc/include",
+                "D:/ESP32/esp-idf/components/soc/esp32/include",
+                "D:/ESP32/esp-idf/components/esp_common/include",
+                "D:/ESP32/esp-idf/components/driver/include",
+                "D:/ESP32/esp-idf/components/log/include",
+                "D:/ESP32/esp-idf/components/fatfs/test_fatfs_host/sdkconfig",
+                "D:/ESP32/esp-idf/components/freertos/port/riscv/include",
+                "D:/ESP32/esp-idf/components/esp_timer/include",
+                "D:/ESP32/esp-idf/components/heap/include",
+                "D:/ESP32/esp-idf/components/freertos/include",
+                "D:/ESP32/esp-idf/components/esp_system/include",
+                "D:/ESP32/esp-idf/components/lwip/test_afl_host",
+                "D:/ESP32/esp-idf/components/esp_hw_support/include",
+                "D:/ESP32/esp-idf/components/xtensa/include",
+                "D:/ESP32/esp-idf/components/xtensa/esp32/include",
+                "D:/ESP32/esp-idf/components/hal/include",
+                "D:/ESP32/esp-idf/components/hal/esp32s2/include",
+                "D:/ESP32/esp-idf/components/hal/esp32s3/include",
+                "D:/ESP32/esp-idf/components/soc/esp32s3/include",
+                "D:/ESP32/esp-idf/components/soc/esp32c3/include",
+                "D:/ESP32/esp-idf/components/esp_rom/include",
+                "D:/ESP32/esp-idf/components/esp_rom/include",
+                "D:/ESP32/esp-idf/components/newlib/platform_include",
+                "${workspaceFolder}/components/ViTAL/include",
+                "D:/ESP32/esp-idf/components/esp_event/include",
+                "D:/ESP32/esp-idf/components/esp_wifi/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

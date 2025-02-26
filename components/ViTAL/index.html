@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> ViTAL </title>
+	
+	<style>
+		* {
+            padding: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #4B4B46;
+		}
+        
+		html, body {
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			background-color: rgb(255, 255, 255);
+			font-size: 15px;
+		}
+        
+		.header {
+            width: 100vw;
+			height: 20vh;
+			background-color: rgb(240, 230,20);
+			text-align: center;
+		}
+		
+		.header-content {
+			color: #4B4B46;
+			padding-top: 3vh;
+			width: 100vw;
+		}
+		
+		.header-content h2 {
+			font-size: 20px;
+		}
+		
+		.grid-container-main {
+			color: #4B4B46;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			text-align: center;
+			height: 100vh;
+			width:100vw;
+			font-size: 15px;
+		}
+		
+		.grid-container-left {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 20% 1fr 1fr 1fr 1fr 1fr;
+		}
+		
+		.grid-container-right {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 20% 1fr 1fr 1fr 1fr 1fr;
+		}
+		
+		.grid-item-header {
+			margin: 1vh 0.5vw;
+			grid-column: 1/ span 2; 
+			border-radius: 5px;
+			padding: 25px 0;
+			background-color:  rgb( 240, 230, 20);
+			font-size: 15px;
+		}
+        
+        .temp-form-container {
+			margin: 1vh 0.5vw;
+			grid-column: 1 / span 2;
+			border-radius: 5px;
+			padding: 25px 0;
+			background-color:  rgb( 240, 230, 20);
+			font-size: 15px;
+		}
+		
+		.temp-form {
+			color: #4B4B46;
+			font-size: 15px;
+			font-weight: bold;
+		}
+		
+		#user-temperature{
+			height: 20px;
+            width: 150px;
+            text-align: center;
+		}
+		
+		#temp-submit{
+			width: 80px;
+			padding: 3px 0;
+			color: #4B4B46;
+			font-size: 15px;
+			font-weight: bold;
+			margin-top: 0.5vh;
+		}
+		
+		.form-item {
+			margin: 5%;
+		}
+		
+		.buttonSubmit {
+			height: 100px;
+			width: 100px;
+			border-radius: 50%;
+			background-color: rgb(240, 230,20);
+			color: #4B4B46;
+			font-size: 15px;
+			font-weight: bold;
+			border: none;
+		}
+		
+		.status-container {
+			height: 100px;
+			width: 150px;
+			background-color: rgb(240, 230 , 20);
+			color: #4B4B46;
+			border-radius: 5%;
+			margin: 5% auto;
+		}
+		
+		.status-container p{
+			padding: 20%;
+			font-weight: bold;
+		}
+		
+		.buttonSubmit:hover {
+			width: 105px;
+			height: 105px;
+		}
+			
+		@media only screen and (max-width: 600px) {
+            h2 {
+                font-size: 13px;
+            }
+            
+            h1 {
+                font-size: 23px;
+            }
+            
+            .buttonSubmit {
+                font-size: 12px;
+                height:80px;
+                width:80px;
+            }
+            
+            .status-container {
+                height: 80px;
+                width: 90px;
+                font-size: 12px;
+            }
+		}
+		
+        
+        * {
+            padding: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #4B4B46;
+		}
+        
+		html, body {
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			background-color: rgb(255, 255, 255);
+			font-size: 15px;
+		}
+		
+		.header-bottom {
+            width: 100vw;
+			height: 15vh;
+			background-color: rgb(240, 230,20);
+			text-align: center;
+        }
+
+        .header-content-bottom {
+            color: #4B4B46;
+            padding-top: 3vh;
+            width: 100vw;
+        }
+        .header-content-bottom h2 {
+			font-size: 20px;
+		}
+        .grid-container-main-bottom {
+            color: #4B4B46;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            text-align: center;
+            height: 80vh;
+            width: 100vw;
+            font-size: 15px;
+        }
+
+        .grid-container-left-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 20% 1fr 1fr 1fr;
+
+        }
+
+        .grid-container-right-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 20% 1fr 1fr 1fr;
+        }
+
+        .grid-item-header-bottom {
+            margin: 1vh 0.5vw;
+            grid-column: 1/ span 2;
+            border-radius: 5px;
+            padding: 25px 0;
+            background-color: rgb( 240, 230, 20);
+            font-size: 15px;
+        }
+
+        .temp-form-container-bottom {
+            margin: 1vh 0.5vw;
+            grid-column: 1 / span 2;
+            border-radius: 5px;
+            padding: 25px 0;
+            background-color: rgb(240, 230, 20);
+            font-size: 15px;
+        }
+        .temp-form-bottom {
+            color: #4B4B46;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .form-item-bottom {
+            margin: 5%;
+        }
+        
+        .buttonSubmit-bottom {
+            height: 90px;
+            width: 90px;
+            border-radius: 50%;
+            background-color: rgb(240, 230, 20);
+            color: #4B4B46;
+            font-size: 15px;
+            font-weight: bold;
+            border: none;
+        }
+        
+        .status-container-bottom {
+			height: 100px;
+			width: 150px;
+			background-color: rgb(240, 230 , 20);
+			color: #4B4B46;
+			border-radius: 5%;
+			margin: 5% auto;
+		}
+		
+		.status-container-bottom p{
+			padding: 20%;
+			font-weight: bold;
+		}
+        
+        .buttonSubmit-bottom:hover {
+            width: 105px;
+            height: 105px;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 23px;
+            }
+            .buttonSubmit-bottom {
+                font-size: 12px;
+                height:80px;
+                width:80px;
+            }
+            
+            .status-container-bottom {
+                height: 80px;
+                width: 90px;
+                font-size: 12px;
+            }
+        }
+        
+        
+        .btn-group button {
+              background-color: rgb(240, 230, 20);
+              border-radius: 50%;
+              border: none;
+              color: #4B4B46;
+              float: center; 
+        }
+  
+        small{
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+            }
+            
+        .text-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            
+        }
+      
+	</style>
+</head>
+
+<body>
+	<div class= "header">
+		<div class="header-content">
+			<h1> Vitesco Technologies Automotive Laboratory </h1>
+			<h2> Smart car security system </h2>
+		</div>
+	</div>
+	
+	<div class= "grid-container-main">
+		<div class="grid-container-left">
+			<div class="grid-item-header">
+				<h2> Remote Control/Command </h2>
+			</div>
+			
+			<div class="grid-item">
+				<div class="form-item">
+					<form id="buttonFormTrunk" method="post">
+						<button class="buttonSubmit" type="submit" id="buttonSubmitTrunk" name="button" value="Open Trunk">Open Trunk</button>
+					</form>
+				</div>
+			</div>
+			
+			<div class="grid-item">
+				<div class="form-item">
+					<form id="buttonFormALights" method="post">
+						<button class="buttonSubmit" type="submit" id="buttonSubmitALights" name="button" value="Ambiental Lights On">Ambiental Lights On</button>
+					</form>
+				</div>
+			</div>
+			
+			<div class="grid-item">
+				<div class="form-item">
+					<form id="buttonFormFind" method="post">
+						<button class="buttonSubmit" type="submit" id="buttonSubmitFind" name="button" value="Find My Car">Find My Car</button>
+					</form>
+				</div>	
+			</div>
+			
+			<div class="grid-item">
+				<div class="form-item">
+					<form id="buttonFormHonk" method="post">
+						<button class="buttonSubmit" type="submit" id="buttonSubmitHonk" name="button" value="Honk">Honk</button>
+					</form>
+				</div>
+			</div>
+			
+			<div class="grid-item">
+				<div class="form-item">
+					<form id="buttonFormSecurity" method="post">
+						<button class="buttonSubmit" type="submit" id="buttonSubmitSecurity" name="button" value="Security On">Security On</button>
+					</form>
+				</div>
+			</div>
+			
+			<div class="grid-item">
+				<div class="form-item">
+					<form id="buttonFormDoor" method="post">
+						<button class="buttonSubmit" type="submit" id="buttonSubmitDoor" name="button" value="Unlock Door">Unlock Door</button>
+					</form>
+				</div>
+			</div>
+			
+			<div class="grid-item">
+				<div class="form-item">
+					<form id="buttonFormHLights" method="post">
+						<button class="buttonSubmit" type="submit" id="buttonSubmitHLights" name="button" value="Head Lights On">Head Lights On</button>
+					</form>
+				</div>
+			</div> 
+			
+			<div class="grid-item">
+				<div class="form-item"> 
+					<form id="buttonFormFan" method="post">
+						<button class="buttonSubmit" type="submit" id="buttonSubmitFan" name="button" value="Fan On">Fan On</button>
+					</form>
+				</div>
+			</div>
+			  
+		</div>
+
+		
+		<div class="grid-container-right">
+			
+			<div class="grid-item-header">
+				<h2> Information Display </h2>
+			</div>
+            
+            <div class = "temp-form-container">
+				<form class="temp-form" method="post">
+					<label for="user-temperature">Enter your temperature threshold:</label><br>
+					<input type="number" id="user-temperature" name="user-temp" min="15" max="30" required><br>
+					<input id="temp-submit" type="submit" value="Apply">
+                </form>
+			</div>
+			
+            <div class="grid-item">
+				<div class="status-container">
+					<p id="humidity-level"> Humidity </p>
+				</div>
+			</div>
+			
+			<div class="grid-item">
+				<div class="status-container">
+					<p id="heat-index"> Real feel </p>
+				</div>
+			</div>
+			
+			<div class="grid-item">
+				<div class="status-container">
+					<p id="photo-R-level"> Photo-R level </p>
+				</div>
+			</div>
+			
+            <div class="grid-item">
+				<div class="status-container">
+					<p id="temperature-level"> Temperature </p>
+				</div>
+			</div>
+            
+            <div class="grid-item">
+				<div class="status-container">
+					<p id="locked-unlocked-status"> Locked </p>
+				</div>
+			</div>
+           
+            <div class="grid-item">
+				<div class="status-container">
+					<p id="driver-seat-status"> Driver seat<br>unoccupied  </p>
+				</div>	
+			</div>
+		</div>
+		
+	</div>
+	
+	<!-- new part -->
+    	<div class="header-bottom">
+                <div class="header-content-bottom">
+                    <h1> Test BSW </h1>
+                </div>
+        </div>
+	<div class="grid-container-main-bottom">
+	    
+        <div class="grid-container-left-bottom">
+            <div class="grid-item-header-bottom">
+                <h2> Shift register </h2>
+            </div>
+            
+            <div class="grid-item-bottom">
+                <small>RGB</small>
+                <form id="buttonFormShiftReg" method="post">
+                    <button class="buttonSubmit-bottom" type="submit-bottom" id="buttonSubmitShiftReg" name="button" value="ShiftReg">Shift Register On</button>
+                </form>
+				
+            </div>
+            
+			<div class="btn-group">
+                <small>RGB LEDs</small>
+                <form id="buttonFormRLed" method="post">
+                    <button class="buttonSubmit-bottom" type="submit-bottom" id="buttonSubmitRLed" name="button" value="R">R Led On</button>
+                </form>
+                <form id="buttonFormGLed" method="post">
+                    <button class="buttonSubmit-bottom" type="submit-bottom" id="buttonSubmitGLed" name="button" value="G">G Led On</button>
+                </form>
+
+                <!-- este necesara definirea butonului 'buttonEventBLed' -->
+				<form id="buttonFormBLed" method="post">
+                    <button class="buttonSubmit-bottom" type="submit-bottom" id="buttonSubmitBLed" name="button" value="B">B Led On</button>
+                </form>
+
+            </div>
+
+            <div class="grid-item-bottom">
+				<div class="status-container-bottom">
+					<p id="humidity-level"> Humidity </p>
+				</div>
+			</div>
+			
+			 <div class="grid-item-bottom">
+				<div class="status-container-bottom">
+					<p id="temperature-level"> Temperature </p>
+				</div>
+			</div>
+			
+        </div> <!-- div pt left -->
+        
+        <div class="grid-container-right-bottom">
+            <div class="grid-item-header-bottom">
+				<h2> Motors </h2>
+			</div>
+			
+			<div class="grid-item-bottom">
+                <div class="form-item-bottom">
+                    <small>DC Motor</small>
+                    <div class="text-center">
+                    <div class="btn-group" >
+                        <form id="buttonFormDCMotor" method="post">
+                            <button onclick="increment()"  class="buttonSubmit" type="submit" id="buttonSubmit+s" name="button" value="+">+</button>
+                            <button onclick="decrement()"  class="buttonSubmit" type="submit" id="buttonSubmit-s" name="button" value="-">-</button>
+                        </form>
+                    </div></div>
+                <small> <- </small>
+                </div>
+            </div>
+            
+            <div class="grid-item-bottom">
+                <div class="form-item-bottom">
+                    <small>DC Motor</small>
+                    <div class="text-center">
+                    <div class="btn-group" >
+                        <form id="buttonFormDCMotor" method="post">
+                            <button onclick="decrement()"  class="buttonSubmit" type="submit" id="buttonSubmit-d" name="button" value="-">-</button>
+                            <button onclick="increment()"  class="buttonSubmit" type="submit" id="buttonSubmit+d" name="button" value="+">+</button>
+                        </form>
+                    </div></div>
+                <small>-></small>
+                </div>
+            </div> 
+            
+            <div class="grid-item-bottom">
+                <div class="form-item-bottom">
+                    <small>Servo</small>
+                    <div class="text-center">
+                    <div class="btn-group" >
+                        <form id="buttonFormServo" method="post">
+                        <button onclick="increment()"  class="buttonSubmit" type="submit" id="buttonSubmit<-" name="button" value="<-"> <- </button>
+                        <button onclick="decrement()"  class="buttonSubmit" type="submit" id="buttonSubmit->" name="button" value="->"> -> </button>
+                        </form>
+                    </div></div>
+                </div>
+            </div> 
+            
+            <div class="grid-item-bottom">
+                <div class="form-item-bottom">
+                    <small>Buzzer</small>
+                    <div class="text-center">
+                    <div class="btn-group">
+                        <form id="buttonFormServo" method="post">
+                        <button onclick="increment()"  class="buttonSubmit" type="submit" id="buttonSubmit+" name="button" value="+"> + </button>
+                        <button onclick="decrement()"  class="buttonSubmit" type="submit" id="buttonSubmit-" name="button" value="-"> - </button>
+                        </form>
+                    </div></div>
+                </div>
+            </div>
+            
+            <div class="grid-item-bottom">
+				<div class="status-container-bottom">
+					<p id="distance"> Distanta </p>
+    			</div>
+    		</div>
+            
+        </div> <!-- div pt right -->
+        
+    </div> <!-- div pt main bottom -->
+	
+	<script>
+	
+        /******************** POST functions ********************/
+        /********** FAN **********/
+		document.getElementById('buttonFormFan').addEventListener('submit', buttonEventFan);
+		if (localStorage.getItem("valueFan") == null) localStorage.setItem("valueFan", "Fan On");
+        document.getElementById('buttonSubmitFan').innerHTML = localStorage.getItem("valueFan");
+        document.getElementById('buttonSubmitFan').value = localStorage.getItem("valueFan");
+		function buttonEventFan() {
+			if (localStorage.getItem("valueFan") === "Fan On") localStorage.setItem("valueFan", "Fan Off");
+            else localStorage.setItem("valueFan", "Fan On");
+		}
+        
+        /********** TRUNK **********/
+        document.getElementById('buttonFormTrunk').addEventListener('submit', buttonEventTrunk);
+		if (localStorage.getItem("valueTrunk") == null) localStorage.setItem("valueTrunk", "Open Trunk");
+        document.getElementById('buttonSubmitTrunk').innerHTML = localStorage.getItem("valueTrunk");
+        document.getElementById('buttonSubmitTrunk').value = localStorage.getItem("valueTrunk");
+		function buttonEventTrunk() {
+			if (localStorage.getItem("valueTrunk") === "Open Trunk") localStorage.setItem("valueTrunk", "Close Trunk");
+            else localStorage.setItem("valueTrunk", "Open Trunk");
+		}
+        
+        /********** HEAD LIGHTS **********/
+        document.getElementById('buttonFormHLights').addEventListener('submit', buttonEventHLights);
+		if (localStorage.getItem("valueHLights") == null) localStorage.setItem("valueHLights", "Head Lights On");
+        document.getElementById('buttonSubmitHLights').innerHTML = localStorage.getItem("valueHLights");
+        document.getElementById('buttonSubmitHLights').value = localStorage.getItem("valueHLights");
+		function buttonEventHLights() {
+			if (localStorage.getItem("valueHLights") === "Head Lights On") localStorage.setItem("valueHLights", "Head Lights Off");
+            else localStorage.setItem("valueHLights", "Head Lights On");
+		}
+        
+        /********** AMBIENTAL LIGHTS **********/
+        document.getElementById('buttonFormALights').addEventListener('submit', buttonEventALights);
+		if (localStorage.getItem("valueALights") == null) localStorage.setItem("valueALights", "Ambiental Lights On");
+        document.getElementById('buttonSubmitALights').innerHTML = localStorage.getItem("valueALights");
+        document.getElementById('buttonSubmitALights').value = localStorage.getItem("valueALights");
+		function buttonEventALights() {
+			if (localStorage.getItem("valueALights") === "Ambiental Lights On") localStorage.setItem("valueALights", "Ambiental Lights Off");
+            else localStorage.setItem("valueALights", "Ambiental Lights On");
+		}
+        
+        /********** LIGHTS **********/
+        document.getElementById('buttonFormSecurity').addEventListener('submit', buttonEventSecurity);
+		if (localStorage.getItem("valueSecurity") == null) localStorage.setItem("valueSecurity", "Security On");
+        document.getElementById('buttonSubmitSecurity').innerHTML = localStorage.getItem("valueSecurity");
+        document.getElementById('buttonSubmitSecurity').value = localStorage.getItem("valueSecurity");
+		function buttonEventSecurity() {
+			if (localStorage.getItem("valueSecurity") === "Security On") localStorage.setItem("valueSecurity", "Security Off");
+            else localStorage.setItem("valueSecurity", "Security On");
+		}
+        
+        /********** DOOR **********/
+        document.getElementById('buttonFormDoor').addEventListener('submit', buttonEventDoor);
+		if (localStorage.getItem("valueDoor") == null) localStorage.setItem("valueDoor", "Unlock Door");
+        document.getElementById('buttonSubmitDoor').innerHTML = localStorage.getItem("valueDoor");
+        document.getElementById('buttonSubmitDoor').value = localStorage.getItem("valueDoor");
+		function buttonEventDoor() {
+			if (localStorage.getItem("valueDoor") === "Unlock Door") localStorage.setItem("valueDoor", "Lock Door");
+            else localStorage.setItem("valueDoor", "Unlock Door");
+		}
+        
+		/********** Shift Register **********/
+        document.getElementById('buttonFormShiftReg').addEventListener('submit', buttonEventShiftReg);
+		if (localStorage.getItem("valueShiftReg") == null) localStorage.setItem("valueShiftReg", "Shift Register On");
+        document.getElementById('buttonSubmitShiftReg').innerHTML = localStorage.getItem("valueShiftReg");
+        document.getElementById('buttonSubmitShiftReg').value = localStorage.getItem("valueShiftReg");
+		function buttonEventShiftReg() {
+			if (localStorage.getItem("valueShiftReg") === "Shift Register On") localStorage.setItem("valueShiftReg", "Shift Register Off");
+            else localStorage.setItem("valueShiftReg", "Shift Register On");
+		}
+
+
+		/********** Shift Register R Led **********/
+		//adaugam un eveniment de tip 'submit', respectiv, la apasarea butonului, va fi apelata functia 'buttonEventRLed'
+        document.getElementById('buttonFormRLed').addEventListener('submit', buttonEventRLed);
+
+		/* "valueRLed" este o variablia locala in care vom memora valoarea butonului. 
+		  Initial, verificam daca valoarea variabilei este null, si in acest caz vom seta valoare ca fiind "R Led On" */
+		if (localStorage.getItem("valueRLed") == null) localStorage.setItem("valueRLed", "R Led On");
+
+		//innverHTML si value vor trebui actualizate cu valoarea variabilei locale "valueRLed"
+        document.getElementById('buttonSubmitRLed').innerHTML = localStorage.getItem("valueRLed");
+        document.getElementById('buttonSubmitRLed').value = localStorage.getItem("valueRLed");
+
+		/* Valoarea butonului nu reflecta starea ledului. Starea initiala "R Led On" reflecta actiunea viitoare, dupa apasarea butonului.
+		Functia are ca scop comutarea din starea "R Led On" in starea "R Led Off", sau invers, la aparitia evenimentului de tip 'submit' */
+		function buttonEventRLed() {
+			//daca butonul a fost apasat, iar functia a fost apelata, vom verifica starea butonului pe care am salvat-o in "valueRLed"
+			if (localStorage.getItem("valueRLed") === "R Led On") localStorage.setItem("valueRLed", "R Led Off"); //daca este "on", actualizam pe "off"
+            else localStorage.setItem("valueRLed", "R Led On"); //daca este "off", actualizam pe "on"
+		}
+
+		/********** Shift Register G Led **********/
+        document.getElementById('buttonFormGLed').addEventListener('submit', buttonEventGLed);
+		if (localStorage.getItem("valueGLed") == null) localStorage.setItem("valueGLed", "G Led On");
+        document.getElementById('buttonSubmitGLed').innerHTML = localStorage.getItem("valueGLed");
+        document.getElementById('buttonSubmitGLed').value = localStorage.getItem("valueGLed");
+		function buttonEventGLed() {
+			if (localStorage.getItem("valueGLed") === "G Led On") localStorage.setItem("valueGLed", "G Led Off");
+            else localStorage.setItem("valueGLed", "G Led On");
+		}
+
+		/********** Shift Register B Led **********/
+       // este necesara implementarea functionalitatii butonului 'buttonEventBLed'
+
+	    document.getElementById('buttonFormBLed').addEventListener('submit', buttonEventBLed);
+		if (localStorage.getItem("valueBLed") == null) localStorage.setItem("valueBLed", "B Led On");
+        document.getElementById('buttonSubmitBLed').innerHTML = localStorage.getItem("valueBLed");
+        document.getElementById('buttonSubmitBLed').value = localStorage.getItem("valueBLed");
+		function buttonEventBLed() {
+			if (localStorage.getItem("valueBLed") === "B Led On") localStorage.setItem("valueBLed", "B Led Off");
+            else localStorage.setItem("valueBLed", "B Led On");
+		}
+
+        /******************** GET functions ********************/
+        let DataValue = ["", "", "", "", "", ""];
+        if (localStorage.getItem("DataValue0") == null) localStorage.setItem("DataValue0", DataValue[0]);
+        if (localStorage.getItem("DataValue1") == null) localStorage.setItem("DataValue1", DataValue[1]);
+        if (localStorage.getItem("DataValue2") == null) localStorage.setItem("DataValue2", DataValue[2]);
+        if (localStorage.getItem("DataValue3") == null) localStorage.setItem("DataValue3", DataValue[3]);
+        if (localStorage.getItem("DataValue4") == null) localStorage.setItem("DataValue4", DataValue[4]);
+        if (localStorage.getItem("DataValue5") == null) localStorage.setItem("DataValue5", DataValue[5]);
+        
+
+        document.getElementById("temperature-level").innerHTML = "Temperature" + "<br>" + localStorage.getItem("DataValue0") + "&degC";
+        document.getElementById("humidity-level").innerHTML = "Humidity" + "<br>" + localStorage.getItem("DataValue1") + "%";
+        document.getElementById("heat-index").innerHTML = "Real feel" + "<br>" + localStorage.getItem("DataValue2") + "&degC";
+        document.getElementById("photo-R-level").innerHTML = "Photo-R level" + "<br>" + localStorage.getItem("DataValue3");
+        document.getElementById("locked-unlocked-status").innerHTML = localStorage.getItem("DataValue4");
+        document.getElementById("driver-seat-status").innerHTML = "Driver seat" + "<br>" + localStorage.getItem("DataValue5");
+        
+
+        function updateData() {
+            let request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        DataValue = this.responseText.split('\n');
+                        localStorage.setItem("DataValue0", DataValue[0]);
+                        localStorage.setItem("DataValue1", DataValue[1]);
+                        localStorage.setItem("DataValue2", DataValue[2]);
+                        localStorage.setItem("DataValue3", DataValue[3]);
+                        localStorage.setItem("DataValue4", DataValue[4]);
+                        localStorage.setItem("DataValue5", DataValue[5]);
+                    }
+                };
+            request.open('GET', '/data.txt', true);
+            request.send();
+        }
+        
+        function displayData() {
+            document.getElementById("temperature-level").innerHTML = "Temperature" + "<br>" + localStorage.getItem("DataValue0") + "&degC";
+            document.getElementById("humidity-level").innerHTML = "Humidity" + "<br>" + localStorage.getItem("DataValue1") + "%";
+            document.getElementById("heat-index").innerHTML = "Real feel" + "<br>" + localStorage.getItem("DataValue2") + "&degC";
+            document.getElementById("photo-R-level").innerHTML = "Photo-R level" + "<br>" + localStorage.getItem("DataValue3");
+            document.getElementById("locked-unlocked-status").innerHTML = localStorage.getItem("DataValue4");
+            document.getElementById("driver-seat-status").innerHTML = "Driver seat" + "<br>" + localStorage.getItem("DataValue5");
+        }
+        
+        setInterval(updateData, 1000);
+        setInterval(displayData, 500);
+    </script>
+</body>
+</html>
